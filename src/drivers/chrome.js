@@ -1,6 +1,6 @@
-const chromeDriver = require("@sitespeed.io/chromedriver");
-const Chrome = require("selenium-webdriver/chrome");
-const { Builder } = require("selenium-webdriver");
+const chromeDriver = require('@sitespeed.io/chromedriver');
+const Chrome = require('selenium-webdriver/chrome');
+const { Builder } = require('selenium-webdriver');
 
 module.exports = () => {
   const options = new Chrome.Options();
@@ -10,7 +10,7 @@ module.exports = () => {
   options.addArguments("--disable-default-apps");
   options.addArguments("--disable-infobars");
   options.addArguments("--disable-extensions");
-  options.headless();
+  //options.headless();
 
   const service = new Chrome.ServiceBuilder(chromeDriver.binPath());
 
