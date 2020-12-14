@@ -1,5 +1,4 @@
 const chromeDriver = require("../drivers/chrome");
-
 const { until } = require('selenium-webdriver');
 const { By } = require('selenium-webdriver');
 
@@ -19,18 +18,16 @@ const getElementByXpath = async (driver, xpath, timeout = 5000) => {
 };
 
 
-
-
-describe("Aura Code Challenge - Create User Account Tests", () => {
+describe("Aura Code Challenge - Test Suite for Create User Account functionality", () => {
   let driver;
 
   beforeAll(() => {
     driver = chromeDriver();
   });
 
- // afterAll(async () => {
- //   await driver.quit();
- // });
+  afterAll(async () => {
+    await driver.quit();
+  });
 
 
   test("Test 1: Load Home page", async () => {
@@ -45,22 +42,19 @@ describe("Aura Code Challenge - Create User Account Tests", () => {
   test("Test 2: Entering Value in Email field", async () => {
     const emailAddress = await getElementById(driver, 'email_create');
      await emailAddress.clear();
-    //await emailAddress.sendKeys("Hameed_kl@rediffmail.com");
-	await emailAddress.sendKeys("abc143@gmail.com");
+     await emailAddress.sendKeys("abc143@gmail.com");
   });
 
-// working test 2
 
-test("Test 3: Clicking Create an account link ", async () => {
+ test("Test 3: Clicking Create an account link ", async () => {
     const btnCrtAcc = await getElementById(driver, 'SubmitCreate');
      await btnCrtAcc.click();
 
-const txtSubHeading = await getElementByXpath(driver, '//html/body/div/div[2]/div/div[3]/div/div/form/div[1]/h3');
+ const txtSubHeading = await getElementByXpath(driver, '//html/body/div/div[2]/div/div[3]/div/div/form/div[1]/h3');
  const txtSubHeadingValue = await txtSubHeading.getText();
 
-expect(txtSubHeadingValue ).toBe("YOUR PERSONAL INFORMATION");
-// for blank or invalid email address message is : Invalid email address.
-// for already existing address message is : An account using this email address has already been registered. Please enter a valid password or request a new // one.
+ expect(txtSubHeadingValue ).toBe("YOUR PERSONAL INFORMATION");
+
   });
 
 
